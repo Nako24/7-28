@@ -101,36 +101,3 @@ export default {
   }
 }
 </script>
-<script>
-  export default {
-    data() {
-      return {
-        loading: false,
-        showPopup: false
-      }
-    },
-    computed: {
-      // 数量が1以上の商品だけを返す
-      productsInCart() {
-        return this.$store.state.product.products.filter(p => p.quantity > 0); // 名前空間の変更
-      },
-            totalPrice() {
-        return this.$store.getters['product/totalPrice'];
-
-      }
-    },
-    methods: {
-      async purchase() {
-        this.loading = true;
-        await this.$store.dispatch('product/purchaseItems'); // 名前空間の変更
-        this.loading = false;
-        this.showPopup = true;
-  
-        // ポップアップは2秒後に消える
-        setTimeout(() => {
-          this.showPopup = false;
-        }, 3000);
-      }
-    }
-  }
-</script>

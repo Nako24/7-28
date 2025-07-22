@@ -58,49 +58,23 @@
 </template>
 
 <script>
-    export default {
-        computed: {
-            
-            // VueXのstateから商品リストを取得
-            products() {
-                return this.$store.state.product.products; // 名前空間の変更
-            },
-            
-            // getterから合計金額を取得
-            totalPrice() {
-                return this.$store.getters['product/totalPrice']; // 名前空間の変更
-            }
-        },
-
-        methods: {
-            // ボタン押下でmutationをcommitする
-            addToCart(product) {
-                this.$store.commit('product/addToCart', product); // 名前空間の変更
-            }
-        }
+export default {
+  name: 'ProductList',
+  computed: {
+    products() {
+      // ストアのstateからproductsの中身を取得
+      return this.$store.state.products
+    },
+    // ストアのgettersからtotalpriceの処理結果を取得
+    totalPrice() {
+      return this.$store.getters.totalPrice
     }
-</script>
-
-<script>
-    export default {
-        computed: {
-            
-            // VueXのstateから商品リストを取得
-            products() {
-                return this.$store.state.product.products; // 名前空間の変更
-            },
-            
-            // getterから合計金額を取得
-            totalPrice() {
-                return this.$store.getters['product/totalPrice']; // 名前空間の変更
-            }
-        },
-
-        methods: {
-            // ボタン押下でmutationをcommitする
-            addToCart(product) {
-                this.$store.commit('product/addToCart', product); // 名前空間の変更
-            }
-        }
+  },
+  methods: {
+    // ストアのmutationのaddToCartを呼び出す処理
+    addToCart(product) {
+      this.$store.commit('addToCart', product)
     }
+  }
+}
 </script>
