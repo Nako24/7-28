@@ -1,20 +1,23 @@
 <template>
-    <!-- 画面全体のレイアウトコンテナ -->
-  <v-container fluid style="height: 100vh;">
+  <!-- 画面全体のレイアウトコンテナ -->
+  <v-container>
     
     <!-- 中央揃え -->
-    <v-row justify="center" align="start" style="height: 100%;">
-      <v-col cols="10" class="text-center mt-10">
+    <v-row justify="center">
+      
+      <!-- 幅を指定したカラム：モバイルで全幅、タブレットサイズ以上で幅6 -->
+      <v-col cols="12" md="6">
         
         <!-- タイトル表示 -->
-        <h2 class="text-h5 font-weight-bold text-center mb-4">☀天気予報☀</h2>
-        
-        <!-- 確認ボタンを表示 -->
-        <v-btn large color="primary" @click="tryForecast">確認する</v-btn>
+        <h2 class="text-h5 font-weight-bold text-center mb-4">☀天気予報結果☀</h2>
+      
+        <!-- 天気予報を表示 -->
+        <div v-if="forecast">
+          <p v-html="totalForecast"></p>
+        </div>        
 
       </v-col>
     </v-row>
-    
   </v-container>
 </template>
 
@@ -35,11 +38,7 @@ export default {
     // ストアのactionsのfetchForecastを呼び出す処理
     tryForecast() {
       this.$store.dispatch('tryForecast');
-      this.$router.push('/about');
     }
   }
 }
 </script>
-
-
-

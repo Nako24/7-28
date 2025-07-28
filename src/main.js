@@ -1,3 +1,4 @@
+// Vueアプリケーションのファイルを読み込み
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -6,6 +7,7 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+// Vueインスタンスを作成して、App.vueを #app にマウント
 new Vue({
   router,
   store,
